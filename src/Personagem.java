@@ -77,6 +77,7 @@ public class Personagem implements ExisteParaTabuleiro {
     }
 
     public void Curar(Personagem Atingido, Integer cura) {
+        if (!Atingido.EstaNaGuilda(this.Guilda)) {return;}
         Atingido.Receber_dano_cura(cura);
     }
 

@@ -101,8 +101,51 @@ public class Testes{
 
     }
 
+    @Test
+    public  void TesteCuraNaoAliado() {
+        var p1 = new Personagem("p1", TipoAtaqueEnum.CorpoaCorpo);
+        var p2 = new Personagem("Dartagnan", TipoAtaqueEnum.LongoAlcance);
+        var tb = new Tabuleiro(5, 5);
+        var dano = 10;
 
+        tb.AdicionaAoTabuleiro(p1,2 -1,2 -1);
+        tb.AdicionaAoTabuleiro(p2,0,0);
 
+        p2.EntrarNaGuilda("Ghannor");
+        p2.EntrarNaGuilda("Mosqueteiros");
+
+        p1.Machuchar(p2, 10, tb);
+
+        p1.Curar(p2, 10);
+
+        var esperado = 1000 - dano;
+        assertEquals(p2.getVida(),esperado, 0);
+
+    }
+
+    @Test
+    public  void TesteCuraAliado() {
+        var p1 = new Personagem("p1", TipoAtaqueEnum.CorpoaCorpo);
+        var p2 = new Personagem("Dartagnan", TipoAtaqueEnum.LongoAlcance);
+        var tb = new Tabuleiro(5, 5);
+        var dano = 10;
+
+        tb.AdicionaAoTabuleiro(p1,2 -1,2 -1);
+        tb.AdicionaAoTabuleiro(p2,0,0);
+
+        p1.EntrarNaGuilda("Ghannor");
+        p1.EntrarNaGuilda("Mosqueteiros");
+
+        p1.Machuchar(p2, 10, tb);
+
+        //Ele ficou com medo de apanhar e entrou na guilda
+        p2.EntrarNaGuilda(p1.getGuilda());
+        p1.Curar(p2, 10);
+
+        var esperado = 1000 - dano + dano;
+        assertEquals(p2.getVida(),esperado, 0);
+
+    }
 
 
 }
