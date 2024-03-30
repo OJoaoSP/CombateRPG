@@ -17,7 +17,30 @@ de implementar novas funções que precisam mover personagem ou evoluir para alg
 o tabuleiro inteiro. Ainda vale para uma ajuda visual para tabuleiros menores.
 * Ainda não estou satifisfeito com a escrita dos testes para cada função.
 * Porém foi divertido escrever o tabuleiro.
+### Intereção 4
+Aqui foi apresentado a adição de "Guildas" para os personagens. <br>
+Foi relativamente fácil implementar -> Basicamente só adicione mais um atributo da Interface List
+que seria gerenciado pelas funções Adicionar/Excluir Guilda do personagem. Parte interessante foi
+usar a sobrecarga de função podendo aceitar ou uma string com o nome da guilda ou List com nomes de guildas.<br>
+### Intereção 5
+O desafio dessa intereção era criar uma nova classe que poderia sofrer dano, mas não sendo um personagem
+(e mais algumas restrições). <br>
+Como eu resolvi:<br>
+A interface _ExisteParaTabuleiro_ foi a base para resolver sem quebrar as funções já feitas na classe personagem.
+Alguns metodos já implementados no personagem foi colocado como requisito na interface para que fosse mais simples
+saber oque era necessário implementar na nova classe "CoisaNaoPersonagem".<br> 
+#### Pontos de melhoria
+Coisas que ficaram meio estranhas:
+1. A função Machucar da classe Personagem está muito comprida. Precisava revisar para deixa ela mais adequada para um padrao
+SOLID.
+2. A quinta intereção deixa algumas coisas abertas, por exemplo:
+   * O objeto alvo deveria ter um nivel de dificuldade para bater? 
+   assim como a regra de 5 nivel maior causa mais dano, acho que poderia ser válido.
+     (Eu deixei o level padrao como 0 para fins de facilitar isso)
 
+### Próximos passos possiveis
+Teoricamente aqui acaba o desafio, mas seria interessante transformar isso em uma api com o spring.<br>
+Outra ideia é implementar armas, ao invés da classe definir a distância e o dano causado.
 
 
 
